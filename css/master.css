@@ -1,0 +1,49 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.white{
+    color: white;
+}
+.universe{
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    background-color: black;
+    z-index: -2;
+}
+.universe, .star{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+}
+.star{
+    background-color: transparent;
+    z-index: -1;
+}
+.gray{
+    background-color: gray;
+    color: white;
+}
+.c{
+    text-align: center;
+}
+.lt{
+    text-decoration: line-through;
+}
+.ol{
+    text-decoration: overline;
+}
+.ul{
+    text-decoration: underline;
+}
+.sudoCenterThis{
+    position: relative;
+}
+.makeReadable{
+    background-color: rgba(0, 0, 0, .5);
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 1);
+    display: table;
+}
