@@ -24,6 +24,9 @@ body{
     height: 100%;
     width: 100%;
 }
+#universe.scrollable{
+    position: fixed;
+}
 .filters{
     height: 0;
     width: 0;

@@ -15,7 +15,7 @@
         <script src="./js/universe.js"></script>
     </head>
     <body onload="sudoCenter('sudoCenterThis',document.getElementById('universe').clientHeight), mainUniverse()" onresize="sudoCenter('sudoCenterThis',document.getElementById('universe').clientHeight), mainUniverse()">
-        <div id="universe">
+        <div id="universe" class="scrollable">
             <svg class="filters">
                 <defs>
                     <filter id="f1" x="0" y="0">
@@ -30,7 +30,6 @@
             <p>
                     This will take an unknown amount of <span class="lt">development time</span>galactic years...
             </p>
-            </div>
         </main>
     </body>
 </html>
