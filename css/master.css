@@ -5,7 +5,7 @@ body{
 .white{
     color: white;
 }
-.universe{
+#universe{
     top: 0;
     right: 0;
     bottom: 0;
@@ -14,14 +14,19 @@ body{
     background-color: black;
     z-index: -2;
 }
-.universe, .star{
+#universe, .stars{
     position: absolute;
     margin: 0;
     padding: 0;
 }
-.star{
-    background-color: transparent;
+.stars{
     z-index: -1;
+    height: 100%;
+    width: 100%;
+}
+.filters{
+    height: 0;
+    width: 0;
 }
 .gray{
     background-color: gray;
@@ -44,6 +49,9 @@ body{
 }
 .makeReadable{
     background-color: rgba(0, 0, 0, .5);
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 1);
+    box-shadow: 0px 0px 15px 15px rgba(0, 0, 0, .5);
     display: table;
+}
+.null{
+    display: none;
 }

@@ -1,22 +1,24 @@
 function mainUniverse(){
-    var universeElements = document.getElementsByClassName('universe');
+    var universeElement = document.getElementById('universe');
+    var starElements = universeElement.getElementsByClassName('stars');
 
-    if(universeElements==null){
+    if(universeElement==null){
         return -1
+    }else{
+        for(var i = 0; i<starElements.length; i++){
+            clearElementOfAll(starElements[i], 'star');
+        }
+        drawStars(universeElement, 1, 8, '#FDB813');
     }
     // console.log('Star width: '+universeWidth);
     // console.log('Star height: '+universeHeight);
     // console.log('Star density: '+calculateStarDensity(universeElements));
 
-    for(var i = 0; i<universeElements.length; i++){
-        clearElementOfAll(universeElements[i], 'star');
-        drawStars(universeElements[i], 1, 8, '#FDB813');
-    }
-
     return 0
 }
 
 function drawStars(parent, minSize, maxSize, color){
+    var elements = parent.getElementsByClassName('stars');
     var performanceLimit = 400;
     var totalStars = calculateStarDensity(parent);
 
@@ -34,30 +36,27 @@ function drawStars(parent, minSize, maxSize, color){
     // console.log('Stars generating: '+(Math.floor(totalStars)+1));
 
     for(var i = 0; i<(Math.floor(totalStars)+1); i++){
-        setDotRandom(parent, minSize, maxSize, '#FDB813');
+        var getElement = Math.floor(getRandomNumber(0, elements.length));
+
+        setDotRandom(elements[getElement], minSize, maxSize, '#FDB813', 'star');
     }
 }
 
-function setDot(parent, x, y, r, color){
+function setDot(parent, x, y, r, color=null, nameClass=null){
     var xmlns = "http://www.w3.org/2000/svg";
-    var child = document.createElementNS(xmlns, 'svg');
-    var childsChild = document.createElementNS(xmlns, 'circle');
+    var element = document.createElementNS(xmlns, 'circle');
 
-    child.setAttributeNS(null, 'class', 'star');
-    child.setAttributeNS(null, 'style', 'bottom:'+y+'px; left:'+x+'px');
-    child.setAttributeNS(null, 'height', r*2);
-    child.setAttributeNS(null, 'width', r*2);
+    element.setAttributeNS(null, 'cx', x-r);
+    element.setAttributeNS(null, 'cy', y-r);
+    element.setAttributeNS(null, 'r', r);
+    element.setAttributeNS(null, 'fill', color);
+    element.setAttributeNS(null, 'class', nameClass);
+    element.setAttributeNS(null, 'filter', 'url(#f1)')
 
-    childsChild.setAttributeNS(null, 'cx', r);
-    childsChild.setAttributeNS(null, 'cy', r);
-    childsChild.setAttributeNS(null, 'r', r);
-    childsChild.setAttributeNS(null, 'fill', color);
-
-    child.appendChild(childsChild);
-    parent.appendChild(child);
+    parent.appendChild(element);
 }
 
-function setDotRandom(parent, minSize, maxSize, color){
+function setDotRandom(parent, minSize, maxSize, color=null, nameClass=null){
     var r = null;
     var count = 0;
 
@@ -68,7 +67,7 @@ function setDotRandom(parent, minSize, maxSize, color){
 
     if(r==null){r = 1;}
 
-    setDot(parent, Math.floor(getRandomNumber(0, parent.clientWidth)), Math.floor(getRandomNumber(0, parent.clientHeight)), r, color);
+    setDot(parent, Math.floor(getRandomNumber(0, parent.clientWidth)), Math.floor(getRandomNumber(0, parent.clientHeight)), r, color, nameClass);
 }
 
 function calculateDotSize(minSize, maxSize, input){
